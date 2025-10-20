@@ -1,41 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, TrendingUp, Zap, Palette, Cog } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import HeroVideo from "@/components/HeroVideo";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function Variant1() {
-  const containerRef = useRef(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
-
-  useEffect(() => {
-    // Scroll-triggered animations for cards
-    cardsRef.current.forEach((card, index) => {
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 50, rotation: -5 },
-        {
-          opacity: 1,
-          y: 0,
-          rotation: 0,
-          duration: 0.8,
-          ease: "back.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%",
-            end: "top 20%",
-            scrub: 1,
-          },
-        }
-      );
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+  const expertiseRef = useScrollAnimation({ type: "slideIn", stagger: 0.1 });
+  const servicesRef = useScrollAnimation({ type: "scaleIn", stagger: 0.08 });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-emerald-950/20 to-slate-950 text-slate-50" dir="rtl">
@@ -65,54 +36,9 @@ export default function Variant1() {
               </Button>
             </div>
 
-            {/* Animated SVG */}
+            {/* Hero Video Component */}
             <div className="relative w-full h-96 flex items-center justify-center">
-              <svg
-                viewBox="0 0 400 400"
-                className="w-full h-full max-w-md"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#10b981" />
-                    <stop offset="100%" stopColor="#06b6d4" />
-                  </linearGradient>
-                </defs>
-
-                <circle cx="200" cy="200" r="180" fill="none" stroke="url(#grad1)" strokeWidth="2" opacity="0.3" />
-                <circle cx="200" cy="200" r="120" fill="none" stroke="url(#grad1)" strokeWidth="1.5" opacity="0.2" />
-                <circle cx="200" cy="200" r="40" fill="none" stroke="#10b981" strokeWidth="2" />
-
-                <path
-                  d="M 200 80 Q 280 140 260 220 Q 240 280 140 260"
-                  fill="none"
-                  stroke="#10b981"
-                  strokeWidth="3"
-                  opacity="0.6"
-                />
-                <path
-                  d="M 200 80 Q 120 140 140 220 Q 160 280 260 260"
-                  fill="none"
-                  stroke="#06b6d4"
-                  strokeWidth="2"
-                  opacity="0.4"
-                />
-
-                <circle cx="200" cy="80" r="6" fill="#10b981" />
-                <circle cx="260" cy="220" r="5" fill="#06b6d4" opacity="0.7" />
-                <circle cx="140" cy="260" r="5" fill="#10b981" opacity="0.7" />
-
-                <style>{`
-                  @keyframes rotate {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                  }
-                  svg circle:nth-child(5) {
-                    transform-origin: 200px 200px;
-                    animation: rotate 4s linear infinite;
-                  }
-                `}</style>
-              </svg>
+              <HeroVideo colorScheme="green" />
             </div>
           </div>
         </div>
@@ -123,7 +49,7 @@ export default function Variant1() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold mb-16 text-center">המומחיות שמניעה את המכונה</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div ref={expertiseRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: TrendingUp, title: "המוח האנליטי", color: "emerald" },
               { icon: Zap, title: "הלב העסקי", color: "cyan" },
@@ -132,12 +58,10 @@ export default function Variant1() {
             ].map((item, index) => (
               <div
                 key={index}
-                ref={(el) => {
-                  if (el) cardsRef.current[index] = el;
-                }}
-                className={`p-6 bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-lg hover:border-${item.color}-500/50 transition group`}
+                data-animate="true"
+                className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-lg hover:border-emerald-500/50 transition group"
               >
-                <item.icon className={`w-10 h-10 text-${item.color}-500 mb-4`} />
+                <item.icon className="w-10 h-10 text-emerald-500 mb-4 group-hover:scale-110 transition" />
                 <h3 className="text-lg font-bold mb-2">{item.title}</h3>
                 <p className="text-slate-400 text-sm">
                   תיאור קצר של המומחיות הזו בתחום השיווק והעסקים.
@@ -148,12 +72,12 @@ export default function Variant1() {
         </div>
       </section>
 
-      {/* Services Section - Magnetic Tiles */}
+      {/* Services Section */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold mb-16 text-center">הפעלת המכונה</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div ref={servicesRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               "ארכיטקטורה אסטרטגית",
               "ניהול קמפיינים",
@@ -164,9 +88,7 @@ export default function Variant1() {
             ].map((service, index) => (
               <div
                 key={index}
-                ref={(el) => {
-                  if (el) cardsRef.current[index + 4] = el;
-                }}
+                data-animate="true"
                 className="p-6 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 rounded-lg hover:border-emerald-500/60 transition cursor-pointer group"
               >
                 <div className="flex items-center gap-4">
