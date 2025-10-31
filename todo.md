@@ -25,6 +25,13 @@
 - [x] Vite config updated for GitHub Pages base path
 
 ## Pending Features
+- [ ] Redesign website to minimal tech-driven style with white background
+- [ ] Update CSS and Tailwind for purple color palette (#6b46c1 to #9f7aea)
+- [ ] Add monospaced typography (font-mono)
+- [ ] Redesign Home page with minimal aesthetic
+- [ ] Update Navigation and Footer for new design
+- [ ] Redesign all pages (Blog, Contact, Services, About, Case Studies)
+- [ ] Create flat outline illustrations
 - [ ] GitHub Pages deployment configuration
 - [ ] Navigation component integration on all pages
 - [ ] Footer component integration on all pages

@@ -1,122 +1,111 @@
 import { CheckCircle } from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 text-slate-50" dir="rtl">
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          <div className="space-y-6">
-            <h1 className="text-6xl font-bold">
-              אני נדב
-              <br />
-              <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-                בונה מכונות
-              </span>
-            </h1>
-            <p className="text-xl text-slate-300">
-              לא מנהל קמפיינים. לא יוצר תוכן. לא אנליסט. אני כל אלה ביחד.
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col" dir="rtl">
+      <Navigation />
+
+      {/* Header */}
+      <section className="py-16 md:py-24 px-4 bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-mono text-purple-700 font-semibold mb-2">// אודות</p>
+          <h1 className="text-4xl md:text-5xl font-bold font-mono mb-4">מי אני</h1>
+          <p className="text-lg text-gray-600 font-mono max-w-2xl">
+            כלכלן, אנליסט, קריאייטיב. שלוש מקצועות בגוף אחד.
+          </p>
+        </div>
+      </section>
+
+      {/* Story Section */}
+      <section className="py-20 md:py-28 px-4 bg-white flex-grow">
+        <div className="max-w-4xl mx-auto space-y-12">
+          {/* Introduction */}
+          <div className="space-y-4">
+            <p className="text-lg text-gray-700 font-mono leading-relaxed">
+              שלום, אני נדב. בן 28, מתל אביב. בתחילת הדרך שלי בשיווק דיגיטלי, הבנתי משהו פשוט: רוב הסוכנויות מתמחות בדבר אחד. או קריאייטיב, או אנליטיקה, או עסקיות. אבל הצמיחה האמיתית קורית בצומת של שלוש הדברים האלה.
             </p>
           </div>
 
-          <div className="text-6xl text-center">👨‍💼</div>
-        </div>
-
-        {/* Story */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
-          <div className="lg:col-span-2 space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold">הסיפור שלי</h2>
-              <p className="text-slate-300 leading-relaxed">
-                התחלתי בשיווק בלי להיות מעצב או מתכנת. הייתי איש מכירות שלא הבין למה הקמפיינים לא עובדים. אז התחלתי ללמוד.
-              </p>
-              <p className="text-slate-300 leading-relaxed">
-                למדתי כלכלה באוניברסיטה. עבדתי בפרונטליין ובטלפון. ראיתי את הלקוח מהצד שלו. הבנתי מה הוא רוצה, מה הוא צריך, ומה הוא מוכן לשלם.
-              </p>
-              <p className="text-slate-300 leading-relaxed">
-                אחר כך, התחלתי לעבוד בשיווק דיגיטלי. ראיתי את הנתונים. הבנתי שרוב הקמפיינים נכשלים כי אנשים לא מבינים את הלקוח שלהם. הם רק עושים מה שכל אחד אחר עושה.
-              </p>
-              <p className="text-slate-300 leading-relaxed">
-                אז החלטתי לעשות משהו שונה. לא להיות רק מנהל קמפיינים. להיות בונה מכונות. להבין את הלקוח, את העסק, את הנתונים, ואת הכספים. ולבנות קמפיינים שעובדים.
-              </p>
+          {/* Background */}
+          <div className="space-y-6">
+            <div>
+              <p className="text-sm font-mono text-purple-700 font-semibold mb-4">// הרקע</p>
+              <h2 className="text-2xl font-bold font-mono mb-4">איך הגעתי לכאן</h2>
             </div>
 
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold">הגישה שלי</h2>
-              <p className="text-slate-300 leading-relaxed">
-                אני לא מאמין בפתרונות חד-גוניים. כל עסק שונה. כל לקוח שונה. אני מתחיל בשאלות:
+            <div className="space-y-4 font-mono text-gray-700">
+              <p>
+                התחלתי בכלכלה באוניברסיטה. לא בגלל שאני אוהב ספרים, אלא בגלל שאני אוהב לשאול שאלות. "למה?" "איך?" "מה אם?". כלכלה נתנה לי את הכלים לענות על השאלות האלה.
               </p>
-              <ul className="space-y-3">
-                {[
-                  "מי בעצם הלקוח שלך?",
-                  "מה הוא מנסה לפתור?",
-                  "כמה הוא מוכן לשלם?",
-                  "איפה הוא מוצא מידע?",
-                  "מה הוא מאמין?",
-                ].map((q, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="text-orange-500 font-bold mt-1">→</span>
-                    <span className="text-slate-300">{q}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-slate-300 leading-relaxed mt-4">
-                רק אחרי שאני מבין את התשובות, אני בונה את המכונה. וכשאני בונה אותה, אני בונה אותה כדי שתעבוד. לא כדי שתיראה יפה.
+              <p>
+                אחר כך עבדתי במכירות. שנתיים של שיחות עם אנשים, הבנת צרכים, בנייה של יחסים. זה שינה את הדרך שלי לחשוב על שיווק. זה לא על מוצר, זה על אדם.
+              </p>
+              <p>
+                ואז עבדתי בפרונטלי וגם בטלפון. עוד שנתיים של הקשנות קשות, למידה מהלקוחות, הבנת מה באמת חשוב להם.
+              </p>
+              <p>
+                בכל התפקידים האלה, הבנתי שאני אוהב שלוש דברים: מספרים, אנשים, וקריאייטיב. ככל שעבדתי, הבנתי שאני יכול לשלב את שלוש הדברים האלה בשיווק דיגיטלי.
               </p>
             </div>
           </div>
 
           {/* Skills */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold">הכישורים שלי</h3>
-            {[
-              { title: "כלכלן", desc: "הבנה של עסקים ופיננסים" },
-              { title: "אנליסט", desc: "חילוץ תובנות מנתונים" },
-              { title: "קריאייטיב", desc: "יצירת תוכן ששוברים רעש" },
-              { title: "איש מכירות", desc: "הבנה של הלקוח" },
-              { title: "מנהל", desc: "הפעלת קמפיינים בעילות" },
-              { title: "מחשבון", desc: "ספירה של כל שקל" },
-            ].map((skill, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="font-bold">{skill.title}</h4>
-                  <p className="text-slate-400 text-sm">{skill.desc}</p>
+            <div>
+              <p className="text-sm font-mono text-purple-700 font-semibold mb-4">// הכישורים</p>
+              <h2 className="text-2xl font-bold font-mono mb-4">מה אני יודע לעשות</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { title: "אנליטיקה", items: ["Google Analytics", "Data Visualization", "A/B Testing", "ROI Analysis"] },
+                { title: "אסטרטגיה", items: ["Campaign Planning", "Market Analysis", "Competitive Research", "Budget Optimization"] },
+                { title: "קריאייטיב", items: ["Copywriting", "Content Strategy", "Video Concepts", "Design Direction"] },
+                { title: "ביצוע", items: ["Google Ads", "Meta Ads", "TikTok Ads", "Campaign Management"] },
+              ].map((skill, idx) => (
+                <div key={idx} className="p-6 border-2 border-gray-200 rounded-lg">
+                  <h3 className="font-bold font-mono text-lg mb-4">{skill.title}</h3>
+                  <ul className="space-y-2">
+                    {skill.items.map((item, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm font-mono text-gray-700">
+                        <CheckCircle className="w-4 h-4 text-purple-700 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Philosophy */}
+          <div className="space-y-6 p-8 bg-gray-50 border-2 border-gray-200 rounded-lg">
+            <div>
+              <p className="text-sm font-mono text-purple-700 font-semibold mb-4">// הפילוסופיה</p>
+              <h2 className="text-2xl font-bold font-mono mb-4">איך אני עובד</h2>
+            </div>
+
+            <div className="space-y-4 font-mono text-gray-700">
+              <p>
+                <strong>1. נתונים קודם:</strong> לא אני מחליט מה טוב. הנתונים מחליטים. כל החלטה מבוססת על אנליטיקה.
+              </p>
+              <p>
+                <strong>2. קריאייטיב שעובד:</strong> קריאייטיב יפה זה בסדר. קריאייטיב שמוכר זה טוב. קריאייטיב שמוכר וגם מביא תוצאות זה מעולה.
+              </p>
+              <p>
+                <strong>3. שקיפות מלאה:</strong> אתה תדע בדיוק מה קורה בקמפיינים שלך. דוחות שבועיים, מפגשים חודשיים, תמיכה מלאה.
+              </p>
+              <p>
+                <strong>4. צמיחה בר-קיימא:</strong> לא אני מחפש קמפיינים מהירים. אני מחפש צמיחה שנמשכת.
+              </p>
+            </div>
           </div>
         </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-20 border-y border-slate-800">
-          {[
-            { num: "50+", label: "קמפיינים" },
-            { num: "100M+", label: "impressions" },
-            { num: "500K+", label: "conversions" },
-            { num: "8 שנים", label: "ניסיון" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-4xl font-bold text-orange-500 mb-2">{stat.num}</div>
-              <div className="text-slate-400">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-20 text-center space-y-6">
-          <h2 className="text-3xl font-bold">בואו נבנה את המכונה שלך</h2>
-          <p className="text-slate-300 max-w-2xl mx-auto">
-            אם אתה מחפש שיווק שמשלב אנליטיקה, קריאייטיב ועסקיות - בואו נדבר.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 rounded-lg font-bold transition"
-          >
-            צור קשר עכשיו
-          </a>
-        </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

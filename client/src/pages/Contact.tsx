@@ -1,190 +1,191 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    company: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you'd send this to a backend
     console.log("Form submitted:", formData);
     setSubmitted(true);
     setTimeout(() => {
-      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", message: "" });
       setSubmitted(false);
     }, 3000);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 text-slate-50" dir="rtl">
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <div className="space-y-6 mb-20">
-          <h1 className="text-6xl font-bold">
-            בואו נדבר
-            <br />
-            <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-              על המכונה שלך
-            </span>
-          </h1>
-          <p className="text-xl text-slate-300 max-w-2xl">
-            יש לך שאלות? רוצה לדעת איך אנחנו יכולים לעזור? בואו נדבר.
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col" dir="rtl">
+      <Navigation />
+
+      {/* Header */}
+      <section className="py-16 md:py-24 px-4 bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-mono text-purple-700 font-semibold mb-2">// צור קשר</p>
+          <h1 className="text-4xl md:text-5xl font-bold font-mono mb-4">בואו נדבר</h1>
+          <p className="text-lg text-gray-600 font-mono max-w-2xl">
+            יש לך שאלה? רעיון? או אתה רוצה לדבר על הקמפיין הבא שלך? אני כאן.
           </p>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <Mail className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-bold mb-1">דוא"ל</h3>
-                  <a href="mailto:hello@nvision.digital" className="text-slate-400 hover:text-orange-400">
-                    hello@nvision.digital
-                  </a>
+      {/* Contact Section */}
+      <section className="py-20 md:py-28 px-4 bg-white flex-grow">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Contact Info */}
+            <div className="space-y-8">
+              <div>
+                <p className="text-sm font-mono text-purple-700 font-semibold mb-4">// פרטי התקשרות</p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <Mail className="w-6 h-6 text-purple-700 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold font-mono text-gray-900">אימייל</h3>
+                    <a
+                      href="mailto:hello@nvision.digital"
+                      className="text-gray-600 hover:text-purple-700 transition font-mono text-sm"
+                    >
+                      hello@nvision.digital
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <Phone className="w-6 h-6 text-purple-700 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold font-mono text-gray-900">טלפון</h3>
+                    <a
+                      href="tel:+972501234567"
+                      className="text-gray-600 hover:text-purple-700 transition font-mono text-sm"
+                    >
+                      +972 50 123 4567
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <MapPin className="w-6 h-6 text-purple-700 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold font-mono text-gray-900">מיקום</h3>
+                    <p className="text-gray-600 font-mono text-sm">תל אביב, ישראל</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <Phone className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-bold mb-1">טלפון</h3>
-                  <a href="tel:+972501234567" className="text-slate-400 hover:text-orange-400">
-                    +972 50 123 4567
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-bold mb-1">מיקום</h3>
-                  <p className="text-slate-400">תל אביב, ישראל</p>
-                </div>
+              <div className="pt-8 border-t border-gray-200">
+                <p className="text-xs text-gray-500 font-mono mb-4">// זמני תגובה</p>
+                <p className="text-sm text-gray-600 font-mono">
+                  בדרך כלל אני מגיב תוך 24 שעות. בשבתות אני לא עובד.
+                </p>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="space-y-3 pt-8 border-t border-slate-800">
-              <h3 className="font-bold">עקבו אחרינו</h3>
-              <div className="flex gap-4">
-                {[
-                  { name: "LinkedIn", icon: "in" },
-                  { name: "Instagram", icon: "ig" },
-                  { name: "Twitter", icon: "tw" },
-                ].map((social) => (
-                  <a
-                    key={social.name}
-                    href="#"
-                    className="w-10 h-10 bg-slate-800 hover:bg-orange-500 rounded-lg flex items-center justify-center transition"
-                    title={social.name}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Contact Form */}
+            <div className="lg:col-span-2">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-bold mb-2">שם מלא</label>
+                  <label htmlFor="name" className="block text-sm font-mono font-semibold text-gray-900 mb-2">
+                    שם
+                  </label>
                   <input
                     type="text"
+                    id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none text-slate-50"
-                    placeholder="שם שלך"
+                    className="w-full px-4 py-3 border-2 border-gray-200 focus:border-purple-700 rounded-lg font-mono text-gray-900 placeholder-gray-400 focus:outline-none transition"
+                    placeholder="שם מלא"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-sm font-bold mb-2">דוא"ל</label>
+                  <label htmlFor="email" className="block text-sm font-mono font-semibold text-gray-900 mb-2">
+                    אימייל
+                  </label>
                   <input
                     type="email"
+                    id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none text-slate-50"
-                    placeholder="email@example.com"
+                    className="w-full px-4 py-3 border-2 border-gray-200 focus:border-purple-700 rounded-lg font-mono text-gray-900 placeholder-gray-400 focus:outline-none transition"
+                    placeholder="your@email.com"
                   />
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold mb-2">טלפון</label>
+                  <label htmlFor="phone" className="block text-sm font-mono font-semibold text-gray-900 mb-2">
+                    טלפון (אופציונלי)
+                  </label>
                   <input
                     type="tel"
+                    id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none text-slate-50"
+                    className="w-full px-4 py-3 border-2 border-gray-200 focus:border-purple-700 rounded-lg font-mono text-gray-900 placeholder-gray-400 focus:outline-none transition"
                     placeholder="+972 50 123 4567"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-sm font-bold mb-2">חברה</label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
+                  <label htmlFor="message" className="block text-sm font-mono font-semibold text-gray-900 mb-2">
+                    הודעה
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none text-slate-50"
-                    placeholder="שם החברה"
+                    required
+                    rows={6}
+                    className="w-full px-4 py-3 border-2 border-gray-200 focus:border-purple-700 rounded-lg font-mono text-gray-900 placeholder-gray-400 focus:outline-none transition resize-none"
+                    placeholder="ספר לי על הקמפיין שלך..."
                   />
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-sm font-bold mb-2">הודעה</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none text-slate-50 resize-none"
-                  placeholder="ספר לנו על הפרויקט שלך..."
-                />
-              </div>
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-purple-700 hover:bg-purple-800 text-white border-0 font-mono font-bold"
+                >
+                  שלח הודעה
+                  <Send className="mr-2 w-4 h-4" />
+                </Button>
 
-              <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white border-0 py-3 flex items-center justify-center gap-2"
-              >
-                <Send className="w-5 h-5" />
-                שלח הודעה
-              </Button>
-
-              {submitted && (
-                <div className="p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-400">
-                  ✓ תודה! קיבלנו את ההודעה שלך. נחזור אליך בקרוב.
-                </div>
-              )}
-            </form>
+                {submitted && (
+                  <div className="p-4 bg-green-50 border-2 border-green-200 rounded-lg text-green-700 font-mono text-sm">
+                    ✓ תודה! קיבלנו את ההודעה שלך. נחזור אליך בקרוב.
+                  </div>
+                )}
+              </form>
+            </div>
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

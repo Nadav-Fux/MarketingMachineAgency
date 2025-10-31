@@ -15,10 +15,10 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800" dir="rtl">
+    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200" dir="rtl">
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent hover:opacity-80 transition">
+        <Link href="/" className="text-xl font-bold text-purple-700 hover:text-purple-800 transition font-mono">
           nVision
         </Link>
 
@@ -28,7 +28,7 @@ export default function Navigation() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-slate-300 hover:text-orange-400 transition font-medium"
+              className="text-sm text-gray-700 hover:text-purple-700 transition font-mono font-medium"
             >
               {item.label}
             </Link>
@@ -38,7 +38,7 @@ export default function Navigation() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-slate-300 hover:text-orange-400"
+          className="md:hidden text-gray-700 hover:text-purple-700"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -46,14 +46,14 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-slate-800 py-4">
+        <div className="md:hidden bg-gray-50 border-t border-gray-200 py-4">
           <div className="max-w-6xl mx-auto px-4 space-y-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-slate-300 hover:text-orange-400 transition font-medium py-2"
+                className="block text-gray-700 hover:text-purple-700 transition font-mono font-medium py-2"
               >
                 {item.label}
               </Link>
